@@ -3,11 +3,11 @@ import { render, Artboard, Page, View, Text, StyleSheet } from 'react-sketchapp'
 import { Navbar } from 'universal-component-library'
 
 const screenSizes = [
-  { name: 'iPhone 7', width: 375, height: 667 }, 
-  { name: 'Google Pixel 2', width: 411, height: 731 }, 
+  { name: 'iPhone 7', width: 375, height: 667 },
+  { name: 'Google Pixel 2', width: 411, height: 731 },
   { name: 'iPhone X', width: 375, height: 812 },
-  { name: 'iPad - Portrait', width: 768, height: 1024 }, 
-  { name: 'iPad Pro - Portrait', width: 1024, height: 1366 } 
+  { name: 'iPad - Portrait', width: 768, height: 1024 },
+  { name: 'iPad Pro - Portrait', width: 1024, height: 1366 }
 ]
 
 const styles = StyleSheet.create({
