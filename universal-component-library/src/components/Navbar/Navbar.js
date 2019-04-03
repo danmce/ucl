@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, View, Text, StyleSheet } from 'react-primitives';
+import { Image, View, Text, StyleSheet } from 'react-primitives'
 // import styled from '@emotion/primitives'
 
 // const breakpoints = [576, 768, 992, 1200]
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     paddingRight: 16
   },
   brand: {
-    color: 'pink'
+    color: 'blue'
   }
 })
 

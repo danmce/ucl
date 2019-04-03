@@ -1,10 +1,13 @@
 import React from 'react'
-import { Navbar } from 'universal-component-library'
+import { Navbar, Section, Card } from 'universal-component-library'
 
 const App = () => {
   return (
     <div>
       <Navbar />
+      <Section>
+        <Card title='Hello' subtitle='There' description='you' />
+      </Section>
     </div>
   )
 }

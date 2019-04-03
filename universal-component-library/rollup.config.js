@@ -5,6 +5,8 @@ import postcss from 'rollup-plugin-postcss'
 import postcssModules from 'postcss-modules'
 import babel from 'rollup-plugin-babel'
 import pkg from './package.json'
+import alias from 'rollup-plugin-alias'
+import path from 'path'
 
 const cssExportMap = {}
 
@@ -14,13 +16,11 @@ export default {
     file: pkg.main,
     format: 'esm'
   },
-  external: [
-    'react',
-    'react-proptypes',
-    'react-primitives',
-    '@emotion/primitives'
-  ],
+  external: ['react', 'prop-types', 'react-primitives', '@emotion/primitives'],
   plugins: [
+    alias({
+      components: path.resolve(__dirname, 'src/components')
+    }),
     resolve(),
     postcss({
       plugins: [
