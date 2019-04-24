@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navbar, Section, Card } from 'universal-component-library'
+import { Button, Card, Navbar, Section } from 'universal-component-library'
 
 const App = () => {
   return (
@@ -7,6 +7,12 @@ const App = () => {
       <Navbar />
       <Section>
         <Card title='Hello' subtitle='There' description='you' />
+        <Button>Button Primary</Button>
+        <Button>Button Primary Disabled</Button>
+        <Button variant='neutral'>Button Neutral</Button>
+        <Button variant='neutral' disabled>
+          Button Neutral Disabled
+        </Button>
       </Section>
     </div>
   )

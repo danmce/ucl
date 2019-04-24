@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/primitives'
-import { Image, View, Text, StyleSheet } from 'react-primitives'
+import { View } from 'react-primitives'
 
 const SMALL = 'small'
 const MEDIUM = 'medium'
