@@ -19317,7 +19317,7 @@ var styles = _reactSketchapp.StyleSheet.create({
 // #endregion
 
 exports['default'] = function () {
-  Demo6();
+  Demo1();
 };
 
 // #region Demo1

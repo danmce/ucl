@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
 // #endregion
 
 export default () => {
-  Demo6()
+  Demo1()
 }
 
 // #region Demo1
