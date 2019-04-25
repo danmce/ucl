@@ -23,7 +23,8 @@ const Demo1 = () => (
 // #endregion
 
 // #region Demo2
-const Demo2 = () => (
+const Demo2 = () => <TextDemo showForm />
+const TextDemo = ({ showForm }) => (
   <>
     <Navbar />
     <Grid cols={2}>
@@ -37,12 +38,14 @@ const Demo2 = () => (
         worry you make it double Don't worry, be happy Don't worry, be happy now
       </BodyText>
     </Grid>
-    <Grid cols={2}>
-      <Panel>
-        <TextInput label='Sign In' />
-        <Button>Submit</Button>
-      </Panel>
-    </Grid>
+    {showForm && (
+      <Grid cols={2}>
+        <Panel>
+          <TextInput label='Sign In' />
+          <Button>Submit</Button>
+        </Panel>
+      </Grid>
+    )}
   </>
 )
 // #endregion

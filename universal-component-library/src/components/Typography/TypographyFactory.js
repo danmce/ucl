@@ -30,7 +30,14 @@ const StyledText = styled.Text`
   ${props => {
     if (props.bold) {
       return `
-        fontWeight: bold;
+        font-weight: bold;
+      `
+    }
+  }}
+  ${props => {
+    if (props.center) {
+      return `
+        text-align: center;
       `
     }
   }}

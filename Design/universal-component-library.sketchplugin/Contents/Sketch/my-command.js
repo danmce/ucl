@@ -13730,7 +13730,7 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.TitleText = exports.TextInputSketch = exports.TextInput = exports.SubTitleText = exports.Section = exports.ProfileCard = exports.Panel = exports.Navbar = exports.LabelText = exports.HeadlineText = exports.Grid = exports.CardWrapper = exports.Card = exports.Button = exports.BodyText = exports.Avatar = exports.Alert = undefined;
+exports.TitleText = exports.TextInputSketch = exports.TextInput = exports.SubTitleText = exports.Section = exports.ProfileCard = exports.Panel = exports.Navbar = exports.LabelText = exports.HeadlineText = exports.Grid = exports.CardWrapper = exports.Card = exports.Button = exports.Box = exports.BodyText = exports.Avatar = exports.Alert = undefined;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -13974,36 +13974,33 @@ var fonts = {
   Headline: {
     fontSize: typeSizes[0],
     fontFamily: fontFamilies.display,
-    fontWeight: fontWeights.bold,
-    lineHeight: 80
+    fontWeight: fontWeights.bold
   },
   Title: {
     fontSize: typeSizes[2],
     fontFamily: fontFamilies.display,
-    fontWeight: fontWeights.bold,
-    lineHeight: 48
+    fontWeight: fontWeights.bold
   },
   SubTitle: {
     fontSize: typeSizes[4],
     fontFamily: fontFamilies.display,
-    fontWeight: fontWeights.bold,
-    lineHeight: 48
+    fontWeight: fontWeights.bold
   },
   Label: {
     fontSize: typeSizes[5],
     fontFamily: fontFamilies.body,
     fontWeight: fontWeights.regular,
-    lineHeight: '24px',
-    marginBottom: 24,
+    marginBottom: 16,
     display: 'block'
   },
   Body: {
     fontSize: typeSizes[5],
-    fontFamily: fontFamilies.body,
-    fontWeight: fontWeights.regular,
-    lineHeight: 24,
-    marginBottom: 24
+    fontFamily: fontFamilies.display,
+    fontWeight: fontWeights.regular
   }
+};
+var shape = {
+  borderRadius: 4
 };
 
 function _templateObject3() {
@@ -14151,50 +14148,103 @@ var Content$1 = (0, _primitives2['default'])(_reactPrimitives.Text)(_templateObj
   }
 });
 
-function _templateObject8() {
-  var data = _taggedTemplateLiteral(["\n  color: red;\n"]);
+function _templateObject$2() {
+  var data = _taggedTemplateLiteral(["\n  ", "\n  ", "\n  ", "\n"]);
 
-  _templateObject8 = function () {
-    function _templateObject8() {
+  _templateObject$2 = function () {
+    function _templateObject() {
       return data;
     }
 
-    return _templateObject8;
+    return _templateObject;
   }();
 
   return data;
 }
 
-function _templateObject7() {
-  var data = _taggedTemplateLiteral(["\n  color: green;\n"]);
+var TypographyFactory = function () {
+  function TypographyFactory(_ref) {
+    var variant = _ref.variant;
+    return function (_ref2) {
+      var style = _ref2.style,
+          children = _ref2.children,
+          center = _ref2.center,
+          bold = _ref2.bold,
+          rest = _objectWithoutProperties(_ref2, ["style", "children", "center", "bold"]);
 
-  _templateObject7 = function () {
-    function _templateObject7() {
-      return data;
-    }
+      var typographyProps = _objectSpread({
+        style: style,
+        variant: variant
+      }, center && {
+        center: 'true'
+      }, bold && {
+        bold: 'true'
+      });
 
-    return _templateObject7;
-  }();
+      return _react2['default'].createElement(StyledText, _extends({}, typographyProps, rest), children);
+    };
+  }
 
-  return data;
-}
+  return TypographyFactory;
+}();
 
-function _templateObject6() {
-  var data = _taggedTemplateLiteral(["\n  color: blue;\n"]);
+var StyledText = _primitives2['default'].Text(_templateObject$2(), function (props) {
+  return fonts[props.variant];
+}, function (props) {
+  if (props.bold) {
+    return "\n        font-weight: bold;\n      ";
+  }
+}, function (props) {
+  if (props.center) {
+    return "\n        text-align: center;\n      ";
+  }
+});
+TypographyFactory.propTypes = {
+  style: _propTypes2['default'].object,
+  children: _propTypes2['default'].oneOfType([_propTypes2['default'].node, _propTypes2['default'].arrayOf(_propTypes2['default'].node)]),
+  variant: _propTypes2['default'].oneOf(['Headline', 'Title', 'Body'])
+};
 
-  _templateObject6 = function () {
-    function _templateObject6() {
-      return data;
-    }
+var HeadlineText = TypographyFactory({
+  variant: 'Headline'
+});
+var TitleText = TypographyFactory({
+  variant: 'Title'
+});
+var SubTitleText = TypographyFactory({
+  variant: 'SubTitle'
+});
+var LabelText = TypographyFactory({
+  variant: 'Label'
+});
+var BodyText = TypographyFactory({
+  variant: 'Body'
+});
 
-    return _templateObject6;
-  }();
+var Box = function () {
+  function Box() {
+    return _react2['default'].createElement(_reactPrimitives.View, {
+      name: "Box",
+      style: {
+        width: 300,
+        height: 300,
+        padding: spacing,
+        backgroundColor: colors.blueGrey[200]
+      }
+    }, _react2['default'].createElement(TitleText, {
+      name: "Title"
+    }, "Title"), _react2['default'].createElement(SubTitleText, {
+      name: "Summary"
+    }, "Summary"), _react2['default'].createElement(BodyText, {
+      name: "Body"
+    }, "Body"));
+  }
 
-  return data;
-}
+  return Box;
+}();
 
 function _templateObject5() {
-  var data = _taggedTemplateLiteral(["\n  flex-direction: column;\n"]);
+  var data = _taggedTemplateLiteral(["\n  margin-top: ", ";\n  margin-bottom: ", ";\n"]);
 
   _templateObject5 = function () {
     function _templateObject5() {
@@ -14208,7 +14258,7 @@ function _templateObject5() {
 }
 
 function _templateObject4() {
-  var data = _taggedTemplateLiteral(["\n  margin-right: 8px;\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: column;\n"]);
 
   _templateObject4 = function () {
     function _templateObject4() {
@@ -14222,7 +14272,7 @@ function _templateObject4() {
 }
 
 function _templateObject3$1() {
-  var data = _taggedTemplateLiteral(["\n  flex-direction: row;\n  align-items: center;\n"]);
+  var data = _taggedTemplateLiteral(["\n  margin-right: ", ";\n"]);
 
   _templateObject3$1 = function () {
     function _templateObject3() {
@@ -14236,7 +14286,7 @@ function _templateObject3$1() {
 }
 
 function _templateObject2$2() {
-  var data = _taggedTemplateLiteral(["\n  padding: 16px;\n  background-color: white;\n  border-radius: 4px;\n  box-shadow: 0 0 8px #888888;\n"]);
+  var data = _taggedTemplateLiteral(["\n  flex-direction: row;\n  align-items: center;\n"]);
 
   _templateObject2$2 = function () {
     function _templateObject2() {
@@ -14249,47 +14299,8 @@ function _templateObject2$2() {
   return data;
 }
 
-function _templateObject$2() {
-  var data = _taggedTemplateLiteral(["\n  padding: 8px;\n"]);
-
-  _templateObject$2 = function () {
-    function _templateObject() {
-      return data;
-    }
-
-    return _templateObject;
-  }();
-
-  return data;
-}
-
-var Card = function () {
-  function Card(_ref) {
-    var title = _ref.title,
-        subtitle = _ref.subtitle,
-        description = _ref.description;
-    return _react2['default'].createElement(Outer, null, _react2['default'].createElement(Container$2, null, _react2['default'].createElement(Heading, null, _react2['default'].createElement(Avatar$1, null), _react2['default'].createElement(HeadingContent, null, _react2['default'].createElement(Title, null, title), _react2['default'].createElement(SubTitle, null, subtitle))), _react2['default'].createElement(Description, null, description)));
-  }
-
-  return Card;
-}();
-
-Card.propTypes = {
-  title: _propTypes2['default'].string,
-  subtitle: _propTypes2['default'].string,
-  description: _propTypes2['default'].string
-};
-var Outer = _primitives2['default'].View(_templateObject$2());
-var Container$2 = _primitives2['default'].View(_templateObject2$2());
-var Heading = _primitives2['default'].View(_templateObject3$1());
-var Avatar$1 = (0, _primitives2['default'])(Avatar)(_templateObject4());
-var HeadingContent = _primitives2['default'].View(_templateObject5());
-var Title = _primitives2['default'].Text(_templateObject6());
-var SubTitle = _primitives2['default'].Text(_templateObject7());
-var Description = _primitives2['default'].Text(_templateObject8());
-
 function _templateObject$3() {
-  var data = _taggedTemplateLiteral(["\n  margin: -8px;\n"]);
+  var data = _taggedTemplateLiteral(["\n  padding: ", ";\n  background-color: ", ";\n  border-radius: ", ";\n  box-shadow: 0 0 ", " ", ";\n"]);
 
   _templateObject$3 = function () {
     function _templateObject() {
@@ -14301,7 +14312,49 @@ function _templateObject$3() {
 
   return data;
 }
-var CardWrapper = _primitives2['default'].View(_templateObject$3());
+var gutter = spacing / 2;
+
+var Card = function () {
+  function Card(_ref) {
+    var title = _ref.title,
+        subtitle = _ref.subtitle,
+        description = _ref.description,
+        style = _ref.style;
+    return _react2['default'].createElement(Container$2, {
+      style: style
+    }, _react2['default'].createElement(Heading, null, _react2['default'].createElement(Avatar$1, null), _react2['default'].createElement(HeadingContent, null, _react2['default'].createElement(SubTitleText, null, title), _react2['default'].createElement(BodyText, {
+      bold: true
+    }, subtitle))), _react2['default'].createElement(Content$2, null, _react2['default'].createElement(BodyText, null, description)));
+  }
+
+  return Card;
+}();
+
+Card.propTypes = {
+  title: _propTypes2['default'].string,
+  subtitle: _propTypes2['default'].string,
+  description: _propTypes2['default'].string
+};
+var Container$2 = _primitives2['default'].View(_templateObject$3(), spacing + 'px', colors.white, shape.borderRadius + 'px', gutter + 'px', colors.blueGrey[700]);
+var Heading = _primitives2['default'].View(_templateObject2$2());
+var Avatar$1 = (0, _primitives2['default'])(Avatar)(_templateObject3$1(), gutter + 'px');
+var HeadingContent = _primitives2['default'].View(_templateObject4());
+var Content$2 = _primitives2['default'].View(_templateObject5(), spacing + 'px', spacing + 'px');
+
+function _templateObject$4() {
+  var data = _taggedTemplateLiteral(["\n  margin: -8px;\n"]);
+
+  _templateObject$4 = function () {
+    function _templateObject() {
+      return data;
+    }
+
+    return _templateObject;
+  }();
+
+  return data;
+}
+var CardWrapper = _primitives2['default'].View(_templateObject$4());
 
 function _templateObject4$1() {
   var data = _taggedTemplateLiteral(["\n  padding: ", ";\n"]);
@@ -14345,10 +14398,10 @@ function _templateObject2$3() {
   return data;
 }
 
-function _templateObject$4() {
+function _templateObject$5() {
   var data = _taggedTemplateLiteral(["\n  padding-left: ", ";\n  padding-right: ", ";\n"]);
 
-  _templateObject$4 = function () {
+  _templateObject$5 = function () {
     function _templateObject() {
       return data;
     }
@@ -14374,7 +14427,7 @@ var Grid = function () {
   return Grid;
 }();
 
-var Wrapper$1 = _primitives2['default'].View(_templateObject$4(), spacing + 'px', spacing + 'px');
+var Wrapper$1 = _primitives2['default'].View(_templateObject$5(), spacing + 'px', spacing + 'px');
 var Container$3 = _primitives2['default'].View(_templateObject2$3(), spacing + 'px', spacing + 'px');
 var GridItem = _primitives2['default'].View(_templateObject3$2(), function (props) {
   switch (props.cols) {
@@ -14432,10 +14485,10 @@ function _templateObject2$4() {
   return data;
 }
 
-function _templateObject$5() {
+function _templateObject$6() {
   var data = _taggedTemplateLiteral(["\n  align-items: center;\n  background-color: ", ";\n  flex-direction: row;\n  justify-content: flex-end;\n  min-height: 50px;\n  padding-left: ", ";\n  padding-right: ", ";\n"]);
 
-  _templateObject$5 = function () {
+  _templateObject$6 = function () {
     function _templateObject() {
       return data;
     }
@@ -14445,7 +14498,7 @@ function _templateObject$5() {
 
   return data;
 }
-var gutter = Math.ceil(spacing / 2);
+var gutter$1 = Math.ceil(spacing / 2);
 
 var Navbar = function () {
   function Navbar() {
@@ -14455,15 +14508,15 @@ var Navbar = function () {
   return Navbar;
 }();
 
-var Bar = _primitives2['default'].View(_templateObject$5(), colors.blueGrey[700], spacing + 'px', spacing + 'px');
-var Primary = _primitives2['default'].View(_templateObject2$4(), gutter + 'px');
-var Secondary = _primitives2['default'].View(_templateObject3$3(), gutter + 'px');
-var Link = _primitives2['default'].Text(_templateObject4$2(), colors.white, gutter + 'px', gutter + 'px');
+var Bar = _primitives2['default'].View(_templateObject$6(), colors.blueGrey[700], spacing + 'px', spacing + 'px');
+var Primary = _primitives2['default'].View(_templateObject2$4(), gutter$1 + 'px');
+var Secondary = _primitives2['default'].View(_templateObject3$3(), gutter$1 + 'px');
+var Link = _primitives2['default'].Text(_templateObject4$2(), colors.white, gutter$1 + 'px', gutter$1 + 'px');
 
-function _templateObject$6() {
+function _templateObject$7() {
   var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  padding: ", ";\n"]);
 
-  _templateObject$6 = function () {
+  _templateObject$7 = function () {
     function _templateObject() {
       return data;
     }
@@ -14482,7 +14535,7 @@ var Panel = function () {
 
   return Panel;
 }();
-var Container$4 = _primitives2['default'].View(_templateObject$6(), colors.blueGrey[100], spacing + 'px');
+var Container$4 = _primitives2['default'].View(_templateObject$7(), colors.blueGrey[100], spacing + 'px');
 
 function _templateObject11() {
   var data = _taggedTemplateLiteral(["\n  color: black;\n"]);
@@ -14526,10 +14579,10 @@ function _templateObject9() {
   return data;
 }
 
-function _templateObject8$1() {
+function _templateObject8() {
   var data = _taggedTemplateLiteral(["\n  color: black;\n"]);
 
-  _templateObject8$1 = function () {
+  _templateObject8 = function () {
     function _templateObject8() {
       return data;
     }
@@ -14540,10 +14593,10 @@ function _templateObject8$1() {
   return data;
 }
 
-function _templateObject7$1() {
+function _templateObject7() {
   var data = _taggedTemplateLiteral(["\n  flex-direction: column;\n  margin-left: 16px;\n"]);
 
-  _templateObject7$1 = function () {
+  _templateObject7 = function () {
     function _templateObject7() {
       return data;
     }
@@ -14554,10 +14607,10 @@ function _templateObject7$1() {
   return data;
 }
 
-function _templateObject6$1() {
+function _templateObject6() {
   var data = _taggedTemplateLiteral(["\n  margin-right: 8px;\n"]);
 
-  _templateObject6$1 = function () {
+  _templateObject6 = function () {
     function _templateObject6() {
       return data;
     }
@@ -14611,7 +14664,7 @@ function _templateObject3$4() {
 }
 
 function _templateObject2$5() {
-  var data = _taggedTemplateLiteral(["\n  background-color: white;\n  border-radius: 4px;\n  box-shadow: 0 0 8px #888888;\n  overflow: hidden;\n"]);
+  var data = _taggedTemplateLiteral(["\n  background-color: white;\n  border-radius: 4px;\n  box-shadow: 0 0 8px #888888;\n  overflow: hidden;\n  min-height: 400;\n"]);
 
   _templateObject2$5 = function () {
     function _templateObject2() {
@@ -14624,10 +14677,10 @@ function _templateObject2$5() {
   return data;
 }
 
-function _templateObject$7() {
+function _templateObject$8() {
   var data = _taggedTemplateLiteral(["\n  padding: 8px;\n"]);
 
-  _templateObject$7 = function () {
+  _templateObject$8 = function () {
     function _templateObject() {
       return data;
     }
@@ -14641,34 +14694,34 @@ function _templateObject$7() {
 var ProfileCard = function () {
   function ProfileCard(_ref) {
     var user = _ref.user;
-    return user ? _react2['default'].createElement(Outer$1, null, _react2['default'].createElement(Container$5, null, user.imageUri && _react2['default'].createElement(HeroImage, {
+    return user ? _react2['default'].createElement(Outer, null, _react2['default'].createElement(Container$5, null, user.imageUri && _react2['default'].createElement(HeroImage, {
       source: {
         uri: user.imageUri
       }
-    }), _react2['default'].createElement(Section, null, _react2['default'].createElement(Heading$1, null, user.avatarUri && _react2['default'].createElement(Avatar$2, {
+    }), _react2['default'].createElement(Section, null, _react2['default'].createElement(Heading$1, null, _react2['default'].createElement(Avatar$2, {
       uri: user.avatarUri
-    }), _react2['default'].createElement(HeadingContent$1, null, _react2['default'].createElement(Title$1, null, user.name), _react2['default'].createElement(SubTitle$1, null, user.title))), _react2['default'].createElement(Content$2, null, _react2['default'].createElement(Description$1, null, user.summary))))) : null;
+    }), _react2['default'].createElement(HeadingContent$1, null, _react2['default'].createElement(Title, null, user.name), _react2['default'].createElement(SubTitle, null, user.title))), _react2['default'].createElement(Content$3, null, _react2['default'].createElement(Description, null, user.summary))))) : null;
   }
 
   return ProfileCard;
 }();
 
-var Outer$1 = _primitives2['default'].View(_templateObject$7());
+var Outer = _primitives2['default'].View(_templateObject$8());
 var Container$5 = _primitives2['default'].View(_templateObject2$5());
 var Section = _primitives2['default'].View(_templateObject3$4());
 var HeroImage = _primitives2['default'].Image(_templateObject4$3());
 var Heading$1 = _primitives2['default'].View(_templateObject5$1());
-var Avatar$2 = (0, _primitives2['default'])(Avatar)(_templateObject6$1());
-var HeadingContent$1 = _primitives2['default'].View(_templateObject7$1());
-var Title$1 = _primitives2['default'].Text(_templateObject8$1());
-var SubTitle$1 = _primitives2['default'].Text(_templateObject9());
-var Content$2 = _primitives2['default'].View(_templateObject10());
-var Description$1 = _primitives2['default'].Text(_templateObject11());
+var Avatar$2 = (0, _primitives2['default'])(Avatar)(_templateObject6());
+var HeadingContent$1 = _primitives2['default'].View(_templateObject7());
+var Title = _primitives2['default'].Text(_templateObject8());
+var SubTitle = _primitives2['default'].Text(_templateObject9());
+var Content$3 = _primitives2['default'].View(_templateObject10());
+var Description = _primitives2['default'].Text(_templateObject11());
 
-function _templateObject$8() {
+function _templateObject$9() {
   var data = _taggedTemplateLiteral(["\n  padding: 16px;\n"]);
 
-  _templateObject$8 = function () {
+  _templateObject$9 = function () {
     function _templateObject() {
       return data;
     }
@@ -14688,7 +14741,7 @@ var Section$1 = function () {
   return Section;
 }();
 
-var Container$6 = _primitives2['default'].View(_templateObject$8());
+var Container$6 = _primitives2['default'].View(_templateObject$9());
 
 var styles = {
   formElement: {
@@ -14702,7 +14755,8 @@ var styles = {
     borderColor: colors.blueGrey[500],
     backgroundColor: colors.white,
     padding: spacing,
-    width: '100%'
+    width: '100%',
+    minHeight: 45
   }
 };
 
@@ -14781,78 +14835,10 @@ var TextBox$1 = function () {
   return TextBox;
 }();
 
-function _templateObject$9() {
-  var data = _taggedTemplateLiteral(["\n  ", "\n  ", "\n"]);
-
-  _templateObject$9 = function () {
-    function _templateObject() {
-      return data;
-    }
-
-    return _templateObject;
-  }();
-
-  return data;
-}
-
-var TypographyFactory = function () {
-  function TypographyFactory(_ref) {
-    var variant = _ref.variant;
-    return function (_ref2) {
-      var style = _ref2.style,
-          children = _ref2.children,
-          center = _ref2.center,
-          bold = _ref2.bold,
-          rest = _objectWithoutProperties(_ref2, ["style", "children", "center", "bold"]);
-
-      var typographyProps = _objectSpread({
-        style: style,
-        variant: variant
-      }, center && {
-        center: 'true'
-      }, bold && {
-        bold: 'true'
-      });
-
-      return _react2['default'].createElement(StyledText, _extends({}, typographyProps, rest), children);
-    };
-  }
-
-  return TypographyFactory;
-}();
-
-var StyledText = _primitives2['default'].Text(_templateObject$9(), function (props) {
-  return fonts[props.variant];
-}, function (props) {
-  if (props.bold) {
-    return "\n        fontWeight: bold;\n      ";
-  }
-});
-TypographyFactory.propTypes = {
-  style: _propTypes2['default'].object,
-  children: _propTypes2['default'].oneOfType([_propTypes2['default'].node, _propTypes2['default'].arrayOf(_propTypes2['default'].node)]),
-  variant: _propTypes2['default'].oneOf(['Headline', 'Title', 'Body'])
-};
-
-var HeadlineText = TypographyFactory({
-  variant: 'Headline'
-});
-var TitleText = TypographyFactory({
-  variant: 'Title'
-});
-var SubTitleText = TypographyFactory({
-  variant: 'SubTitle'
-});
-var LabelText = TypographyFactory({
-  variant: 'Label'
-});
-var BodyText = TypographyFactory({
-  variant: 'Body'
-});
-
 exports.Alert = AlertComponent;
 exports.Avatar = Avatar;
 exports.BodyText = BodyText;
+exports.Box = Box;
 exports.Button = Button;
 exports.Card = Card;
 exports.CardWrapper = CardWrapper;
@@ -19286,22 +19272,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
 
-var screenSizes = [{ name: 'iPhone 7', width: 375, height: 1366 }, { name: 'Google Pixel 2', width: 411, height: 1366 }, { name: 'iPhone X', width: 375, height: 1366 }, { name: 'iPad - Portrait', width: 768, height: 1366 }, { name: 'iPad Pro - Portrait', width: 1024, height: 1366 }];
-
-var styles = _reactSketchapp.StyleSheet.create({
-  app: {
-    flexDirection: 'row'
-  },
-  screen: {
-    margin: 20
-  },
-  screenText: {
-    marginBottom: 10,
-    fontSize: 28,
-    fontFamily: 'Courier-Bold'
-  }
-});
-
+// #region Screen
 var Screen = function Screen(_ref) {
   var name = _ref.name,
       width = _ref.width,
@@ -19327,9 +19298,26 @@ var Screen = function Screen(_ref) {
     )
   );
 };
+// #endregion
+
+// #region Styles
+var styles = _reactSketchapp.StyleSheet.create({
+  app: {
+    flexDirection: 'row'
+  },
+  screen: {
+    margin: 20
+  },
+  screenText: {
+    marginBottom: 10,
+    fontSize: 28,
+    fontFamily: 'Courier-Bold'
+  }
+});
+// #endregion
 
 exports['default'] = function () {
-  Demo2();
+  Demo6();
 };
 
 // #region Demo1
@@ -19360,7 +19348,79 @@ var Navigation = function Navigation() {
 
 // #region Demo2
 var Demo2 = function Demo2() {
+  (0, _reactSketchapp.render)(React.createElement(Symbols, null), context.document.currentPage());
+};
+
+var BoxSym = (0, _reactSketchapp.makeSymbol)(_universalComponentLibrary.Box, 'ui/box');
+
+var Symbols = function Symbols() {
+  return React.createElement(
+    _reactSketchapp.Page,
+    null,
+    React.createElement(
+      _reactSketchapp.Artboard,
+      {
+        name: 'Home',
+        style: {
+          width: 1024,
+          height: 768
+        }
+      },
+      React.createElement(BoxSym, { overrides: {} })
+    )
+  );
+};
+// #endregion
+
+// #region Demo3
+var Demo3 = function Demo3() {
   (0, _reactSketchapp.render)(React.createElement(TextBlock, null), context.document.currentPage());
+};
+
+var PageContent = function PageContent(_ref2) {
+  var cols = _ref2.cols,
+      showForm = _ref2.showForm;
+  return React.createElement(
+    _reactSketchapp.View,
+    null,
+    React.createElement(
+      _universalComponentLibrary.Grid,
+      { cols: cols },
+      React.createElement(
+        _reactSketchapp.View,
+        null,
+        React.createElement(
+          _universalComponentLibrary.HeadlineText,
+          null,
+          'Welcome'
+        ),
+        React.createElement(
+          _universalComponentLibrary.TitleText,
+          null,
+          'How are you?'
+        )
+      ),
+      React.createElement(
+        _universalComponentLibrary.BodyText,
+        null,
+        'Here\'s a little song I wrote You might want to sing it note for note Don\'t worry, be happy In every life we have some trouble But when you worry you make it double Don\'t worry, be happy Don\'t worry, be happy now'
+      )
+    ),
+    showForm && React.createElement(
+      _universalComponentLibrary.Grid,
+      { cols: cols },
+      React.createElement(
+        _universalComponentLibrary.Panel,
+        null,
+        React.createElement(_universalComponentLibrary.TextInputSketch, { label: 'Sign In' }),
+        React.createElement(
+          _universalComponentLibrary.Button,
+          null,
+          'Submit'
+        )
+      )
+    )
+  );
 };
 
 var TextBlock = function TextBlock() {
@@ -19377,86 +19437,15 @@ var TextBlock = function TextBlock() {
         }
       },
       React.createElement(_universalComponentLibrary.Navbar, null),
-      React.createElement(
-        _universalComponentLibrary.Grid,
-        { cols: 2 },
-        React.createElement(
-          _reactSketchapp.View,
-          null,
-          React.createElement(
-            _universalComponentLibrary.HeadlineText,
-            null,
-            'Welcome'
-          ),
-          React.createElement(
-            _universalComponentLibrary.TitleText,
-            null,
-            'How are you?'
-          )
-        ),
-        React.createElement(
-          _universalComponentLibrary.BodyText,
-          null,
-          'Here\'s a little song I wrote You might want to sing it note for note Don\'t worry, be happy In every life we have some trouble But when you worry you make it double Don\'t worry, be happy Don\'t worry, be happy now'
-        )
-      ),
-      React.createElement(
-        _universalComponentLibrary.Grid,
-        { cols: 2 },
-        React.createElement(
-          _universalComponentLibrary.Panel,
-          null,
-          React.createElement(_universalComponentLibrary.TextInputSketch, { label: 'Sign In' }),
-          React.createElement(
-            _universalComponentLibrary.Button,
-            null,
-            'Submit'
-          )
-        )
-      )
-    ),
-    React.createElement(
-      _reactSketchapp.Artboard,
-      {
-        name: 'Home Mobile',
-        style: {
-          marginTop: 50,
-          width: 320,
-          height: 700
-        }
-      },
-      React.createElement(_universalComponentLibrary.Navbar, null),
-      React.createElement(
-        _universalComponentLibrary.Grid,
-        null,
-        React.createElement(
-          _reactSketchapp.View,
-          null,
-          React.createElement(
-            _universalComponentLibrary.HeadlineText,
-            null,
-            'Welcome'
-          ),
-          React.createElement(
-            _universalComponentLibrary.TitleText,
-            null,
-            'How are you?'
-          )
-        ),
-        React.createElement(
-          _universalComponentLibrary.BodyText,
-          null,
-          'Here\'s a little song I wrote You might want to sing it note for note Don\'t worry, be happy In every life we have some trouble But when you worry you make it double Don\'t worry, be happy Don\'t worry, be happy now'
-        )
-      )
+      React.createElement(PageContent, { cols: 2, showForm: true })
     )
   );
 };
 
 // #endregion
 
-// #region Demo3
-var Demo3 = function Demo3() {
+// #region Demo4
+var Demo4 = function Demo4() {
   (0, _reactSketchapp.render)(React.createElement(Document, null), context.document.currentPage());
 };
 
@@ -19464,18 +19453,6 @@ var Document = function Document() {
   return React.createElement(
     _reactSketchapp.Page,
     null,
-    React.createElement(
-      _reactSketchapp.Artboard,
-      {
-        name: 'Home Mobile',
-        style: {
-          width: 320,
-          height: 548
-        }
-      },
-      React.createElement(_universalComponentLibrary.Navbar, null),
-      React.createElement(_universalComponentLibrary.Card, { title: 'Hello', subtitle: 'There', description: 'you' })
-    ),
     React.createElement(
       _reactSketchapp.Artboard,
       {
@@ -19487,14 +19464,64 @@ var Document = function Document() {
         }
       },
       React.createElement(_universalComponentLibrary.Navbar, null),
-      React.createElement(_universalComponentLibrary.Card, { title: 'Hello', subtitle: 'There', description: 'you' })
+      React.createElement(
+        _universalComponentLibrary.Grid,
+        { cols: 2 },
+        React.createElement(_universalComponentLibrary.Card, { title: 'Hello', subtitle: 'There', description: 'you' })
+      )
+    ),
+    React.createElement(
+      _reactSketchapp.Artboard,
+      {
+        name: 'Home Mobile',
+        style: {
+          width: 320,
+          height: 548,
+          marginTop: 50
+        }
+      },
+      React.createElement(_universalComponentLibrary.Navbar, null),
+      React.createElement(
+        _universalComponentLibrary.Grid,
+        null,
+        React.createElement(_universalComponentLibrary.Card, { title: 'Hello', subtitle: 'There', description: 'you' })
+      )
     )
   );
 };
 // #endregion
 
-// #region Demo4
-var Demo4 = function Demo4() {
+// #region ScreenSizes
+var screenSizes = [{ name: 'iPhone 7', width: 375, height: 1466 }, { name: 'Google Pixel 2', width: 411, height: 1466 }, { name: 'iPhone X', width: 375, height: 1466 }, { name: 'iPad - Portrait', width: 768, height: 1466 }, { name: 'iPad Pro - Portrait', width: 1024, height: 1466 }];
+// #endregion
+
+// #region Demo5
+var Demo5 = function Demo5() {
+  (0, _reactSketchapp.render)(React.createElement(Screens, null), context.document.currentPage());
+};
+
+var Screens = function Screens(_ref3) {
+  var users = _ref3.users;
+  return React.createElement(
+    _reactSketchapp.View,
+    { style: styles.app },
+    screenSizes.map(function (_ref4) {
+      var name = _ref4.name,
+          width = _ref4.width,
+          height = _ref4.height;
+      return React.createElement(
+        Screen,
+        { key: name, name: name, width: width, height: height },
+        React.createElement(_universalComponentLibrary.Navbar, null)
+      );
+    })
+  );
+};
+// #endregion
+
+// #region Demo6
+// #region call
+var Demo6 = function Demo6() {
   fetch('https://api.graph.cool/simple/v1/cju095oko0dex0151o7paq2u7', {
     method: 'POST',
     headers: {
@@ -19509,24 +19536,31 @@ var Demo4 = function Demo4() {
     return (0, _reactSketchapp.render)(React.createElement(App, { users: data.data.allUsers }), context.document.currentPage());
   });
 };
+// #endregion
 
-var App = function App(_ref2) {
-  var users = _ref2.users;
+var App = function App(_ref5) {
+  var users = _ref5.users;
   return React.createElement(
     _reactSketchapp.View,
     { style: styles.app },
-    screenSizes.map(function (_ref3) {
-      var name = _ref3.name,
-          width = _ref3.width,
-          height = _ref3.height;
+    screenSizes.map(function (_ref6) {
+      var name = _ref6.name,
+          width = _ref6.width,
+          height = _ref6.height;
       return React.createElement(
         Screen,
         { key: name, name: name, width: width, height: height },
         React.createElement(_universalComponentLibrary.Navbar, null),
         React.createElement(
-          _universalComponentLibrary.Section,
-          null,
-          React.createElement(_Profiles2['default'], { users: users })
+          _universalComponentLibrary.Grid,
+          { cols: width >= 1024 ? 3 : width >= 768 ? 2 : 1 },
+          React.createElement(_universalComponentLibrary.ProfileCard, {
+            user: {
+              name: 'Daniel',
+              title: 'Resource',
+              summary: 'Does stuff, no one really knows what though'
+            }
+          })
         )
       );
     })

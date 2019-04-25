@@ -14,6 +14,7 @@ export default {
     borderColor: colors.blueGrey[500],
     backgroundColor: colors.white,
     padding: spacing,
-    width: '100%'
+    width: '100%',
+    minHeight: 45
   }
 }

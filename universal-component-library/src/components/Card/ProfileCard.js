@@ -9,7 +9,7 @@ const ProfileCard = ({ user }) => {
         {user.imageUri && <HeroImage source={{ uri: user.imageUri }} />}
         <Section>
           <Heading>
-            {user.avatarUri && <Avatar uri={user.avatarUri} />}
+            <Avatar uri={user.avatarUri} />
             <HeadingContent>
               <Title>{user.name}</Title>
               <SubTitle>{user.title}</SubTitle>
@@ -33,6 +33,7 @@ const Container = styled.View`
   border-radius: 4px;
   box-shadow: 0 0 8px #888888;
   overflow: hidden;
+  min-height: 400;
 `
 
 const Section = styled.View`

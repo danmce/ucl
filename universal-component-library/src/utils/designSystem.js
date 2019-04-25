@@ -33,36 +33,34 @@ export const fonts = {
   Headline: {
     fontSize: typeSizes[0],
     fontFamily: fontFamilies.display,
-    fontWeight: fontWeights.bold,
-    lineHeight: 80
+    fontWeight: fontWeights.bold
   },
   Title: {
     fontSize: typeSizes[2],
     fontFamily: fontFamilies.display,
-    fontWeight: fontWeights.bold,
-    lineHeight: 48
+    fontWeight: fontWeights.bold
   },
   SubTitle: {
     fontSize: typeSizes[4],
     fontFamily: fontFamilies.display,
-    fontWeight: fontWeights.bold,
-    lineHeight: 48
+    fontWeight: fontWeights.bold
   },
   Label: {
     fontSize: typeSizes[5],
     fontFamily: fontFamilies.body,
     fontWeight: fontWeights.regular,
-    lineHeight: '24px',
-    marginBottom: 24,
+    marginBottom: 16,
     display: 'block'
   },
   Body: {
     fontSize: typeSizes[5],
-    fontFamily: fontFamilies.body,
-    fontWeight: fontWeights.regular,
-    lineHeight: 24,
-    marginBottom: 24
+    fontFamily: fontFamilies.display,
+    fontWeight: fontWeights.regular
   }
+}
+
+export const shape = {
+  borderRadius: 4
 }
 
 export default {

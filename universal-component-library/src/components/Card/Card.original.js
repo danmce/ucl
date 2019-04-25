@@ -8,20 +8,22 @@ import { SubTitleText, BodyText } from 'components/Typography/index'
 
 const gutter = spacing / 2
 
-const Card = ({ title, subtitle, description, style }) => (
-  <Container style={style}>
-    <Heading>
-      <Avatar />
-      <HeadingContent>
-        <SubTitleText>{title}</SubTitleText>
-        <BodyText bold>{subtitle}</BodyText>
-      </HeadingContent>
-    </Heading>
-    <Content>
-      <BodyText>{description}</BodyText>
-    </Content>
-  </Container>
-)
+const Card = ({ title, subtitle, description, style }) => {
+  return (
+    <Container style={style}>
+      <Heading>
+        <Avatar />
+        <HeadingContent>
+          <SubTitleText>{title}</SubTitleText>
+          <BodyText bold>{subtitle}</BodyText>
+        </HeadingContent>
+      </Heading>
+      <Content>
+        <BodyText>{description}</BodyText>
+      </Content>
+    </Container>
+  )
+}
 
 Card.propTypes = {
   title: PropTypes.string,
