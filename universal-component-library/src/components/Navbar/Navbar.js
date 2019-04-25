@@ -1,47 +1,46 @@
 import React from 'react'
-import { Image, View, Text, StyleSheet } from 'react-primitives'
-// import styled from '@emotion/primitives'
+import { colors, spacing } from 'utils/designSystem'
+import styled from '@emotion/primitives'
 
-// const breakpoints = [576, 768, 992, 1200]
-
-// const mq = breakpoints.map(
-//   bp => `@media (min-width: ${bp}px)`
-// )
-
-// const Bar = styled.View({
-//   backgroundColor: '#78909C',
-//   minHeight: 40,
-//   display: 'flex',
-//   justifyContent: 'center',
-//   paddingLeft: 16,
-//   paddingRight: 16
-// })
-
-// const Brand = styled.Text({
-//   color: 'white',
-//   [mq[3]]: {
-//     color: 'red'
-//   }
-// })
-
-const styles = StyleSheet.create({
-  bar: {
-    backgroundColor: '#78909C',
-    minHeight: 40,
-    display: 'flex',
-    justifyContent: 'center',
-    paddingLeft: 16,
-    paddingRight: 16
-  },
-  brand: {
-    color: 'blue'
-  }
-})
+const gutter = Math.ceil(spacing / 2)
 
 const Navbar = () => (
-  <View style={styles.bar}>
-    <Text style={styles.brand}>Logo test</Text>
-  </View>
+  <Bar>
+    <Primary>
+      <Link>Home</Link>
+    </Primary>
+    <Secondary>
+      <Link>About</Link>
+      <Link>Contact</Link>
+    </Secondary>
+  </Bar>
 )
+
+const Bar = styled.View`
+  align-items: center;
+  background-color: ${colors.blueGrey[700]};
+  flex-direction: row;
+  justify-content: flex-end;
+  min-height: 50px;
+  padding-left: ${spacing + 'px'};
+  padding-right: ${spacing + 'px'};
+`
+
+const Primary = styled.View`
+  margin-left: -${gutter + 'px'};
+`
+
+const Secondary = styled.View`
+  align-items: center;
+  flex-direction: row;
+  margin-left: auto;
+  margin-right: -${gutter + 'px'};
+`
+
+const Link = styled.Text`
+  color: ${colors.white};
+  margin-left: ${gutter + 'px'};
+  margin-right: ${gutter + 'px'};
+`
 
 export default Navbar

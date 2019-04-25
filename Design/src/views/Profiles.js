@@ -6,7 +6,7 @@ const Profiles = ({ users }) => {
     <CardWrapper>
       {users &&
         users.map((user, index) => {
-          return <ProfileCard key={index} user={{ name: user.name }} />
+          return <ProfileCard key={index} user={user} />
         })}
     </CardWrapper>
   )

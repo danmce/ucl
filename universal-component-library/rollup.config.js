@@ -7,11 +7,14 @@ import babel from 'rollup-plugin-babel'
 import pkg from './package.json'
 import alias from 'rollup-plugin-alias'
 import path from 'path'
+import image from 'rollup-plugin-image'
 
 const cssExportMap = {}
 
 export default {
   input: 'src/index.js',
+  entry: 'src/index.js',
+  dest: 'dist/bundle.js',
   output: {
     file: pkg.main,
     format: 'esm'
@@ -19,8 +22,10 @@ export default {
   external: ['react', 'prop-types', 'react-primitives', '@emotion/primitives'],
   plugins: [
     alias({
-      components: path.resolve(__dirname, 'src/components')
+      components: path.resolve(__dirname, 'src/components'),
+      utils: path.resolve(__dirname, 'src/utils')
     }),
+    image(),
     resolve(),
     postcss({
       plugins: [
