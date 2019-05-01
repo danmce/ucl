@@ -94,7 +94,7 @@ const Symbols = () => (
         height: 768
       }}
     >
-      <BoxSym overrides={{}} />
+      <BoxSym overrides={{ Title: 'Hi' }} />
     </Artboard>
   </Page>
 )
@@ -139,7 +139,7 @@ const TextBlock = () => (
       }}
     >
       <Navbar />
-      <PageContent cols={2} showForm />
+      <PageContent cols={2} />
     </Artboard>
   </Page>
 )
@@ -167,7 +167,7 @@ const Document = () => {
           <Card title='Hello' subtitle='There' description='you' />
         </Grid>
       </Artboard>
-      <Artboard
+      {/* <Artboard
         name='Home Mobile'
         style={{
           width: 320,
@@ -176,10 +176,10 @@ const Document = () => {
         }}
       >
         <Navbar />
-        <Grid>
+        <Grid cols={2}>
           <Card title='Hello' subtitle='There' description='you' />
         </Grid>
-      </Artboard>
+      </Artboard> */}
     </Page>
   )
 }
@@ -195,8 +195,8 @@ const screenSizes = [
 ]
 // #endregion
 
-// #region Demo5
-const Demo5 = () => {
+// #region Demo4a
+const Demo4a = () => {
   render(<Screens />, context.document.currentPage())
 }
 
@@ -211,9 +211,9 @@ const Screens = ({ users }) => (
 )
 // #endregion
 
-// #region Demo6
+// #region Demo5
 // #region call
-const Demo6 = () => {
+const Demo5 = () => {
   fetch('https://api.graph.cool/simple/v1/cju095oko0dex0151o7paq2u7', {
     method: 'POST',
     headers: {

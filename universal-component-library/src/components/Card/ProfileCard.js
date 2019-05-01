@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from '@emotion/primitives'
 import AvatarUS from 'components/Avatar/Avatar'
+import PropTypes from 'prop-types'
 
 const ProfileCard = ({ user }) => {
   return user ? (
@@ -22,6 +23,16 @@ const ProfileCard = ({ user }) => {
       </Container>
     </Outer>
   ) : null
+}
+
+ProfileCard.propTypes = {
+  user: PropTypes.shape({
+    avatarUri: PropTypes.string,
+    imageUri: PropTypes.string,
+    name: PropTypes.string,
+    title: PropTypes.string,
+    summary: PropTypes.string
+  })
 }
 
 const Outer = styled.View`

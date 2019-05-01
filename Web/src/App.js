@@ -3,6 +3,7 @@ import {
   Navbar,
   Section,
   ProfileCard,
+  Card,
   Grid,
   TitleText,
   SubTitleText,
@@ -22,8 +23,8 @@ const Demo1 = () => (
 )
 // #endregion
 
-// #region Demo2
-const Demo2 = () => <TextDemo showForm />
+// #region Demo3
+const Demo3 = () => <TextDemo />
 const TextDemo = ({ showForm }) => (
   <>
     <Navbar />
@@ -55,7 +56,7 @@ const Demo4 = () => (
   <>
     <Navbar />
     <Section>
-      <Grid cols={3}>
+      <Grid cols={2}>
         <ProfileCard
           user={{
             name: 'Daniel',

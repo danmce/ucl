@@ -14706,6 +14706,15 @@ var ProfileCard = function () {
   return ProfileCard;
 }();
 
+ProfileCard.propTypes = {
+  user: _propTypes2['default'].shape({
+    avatarUri: _propTypes2['default'].string,
+    imageUri: _propTypes2['default'].string,
+    name: _propTypes2['default'].string,
+    title: _propTypes2['default'].string,
+    summary: _propTypes2['default'].string
+  })
+};
 var Outer = _primitives2['default'].View(_templateObject$8());
 var Container$5 = _primitives2['default'].View(_templateObject2$5());
 var Section = _primitives2['default'].View(_templateObject3$4());
@@ -19366,7 +19375,7 @@ var Symbols = function Symbols() {
           height: 768
         }
       },
-      React.createElement(BoxSym, { overrides: {} })
+      React.createElement(BoxSym, { overrides: { Title: 'Hi' } })
     )
   );
 };
@@ -19437,7 +19446,7 @@ var TextBlock = function TextBlock() {
         }
       },
       React.createElement(_universalComponentLibrary.Navbar, null),
-      React.createElement(PageContent, { cols: 2, showForm: true })
+      React.createElement(PageContent, { cols: 2 })
     )
   );
 };
@@ -19469,23 +19478,6 @@ var Document = function Document() {
         { cols: 2 },
         React.createElement(_universalComponentLibrary.Card, { title: 'Hello', subtitle: 'There', description: 'you' })
       )
-    ),
-    React.createElement(
-      _reactSketchapp.Artboard,
-      {
-        name: 'Home Mobile',
-        style: {
-          width: 320,
-          height: 548,
-          marginTop: 50
-        }
-      },
-      React.createElement(_universalComponentLibrary.Navbar, null),
-      React.createElement(
-        _universalComponentLibrary.Grid,
-        null,
-        React.createElement(_universalComponentLibrary.Card, { title: 'Hello', subtitle: 'There', description: 'you' })
-      )
     )
   );
 };
@@ -19495,8 +19487,8 @@ var Document = function Document() {
 var screenSizes = [{ name: 'iPhone 7', width: 375, height: 1466 }, { name: 'Google Pixel 2', width: 411, height: 1466 }, { name: 'iPhone X', width: 375, height: 1466 }, { name: 'iPad - Portrait', width: 768, height: 1466 }, { name: 'iPad Pro - Portrait', width: 1024, height: 1466 }];
 // #endregion
 
-// #region Demo5
-var Demo5 = function Demo5() {
+// #region Demo4a
+var Demo4a = function Demo4a() {
   (0, _reactSketchapp.render)(React.createElement(Screens, null), context.document.currentPage());
 };
 
@@ -19519,9 +19511,9 @@ var Screens = function Screens(_ref3) {
 };
 // #endregion
 
-// #region Demo6
+// #region Demo5
 // #region call
-var Demo6 = function Demo6() {
+var Demo5 = function Demo5() {
   fetch('https://api.graph.cool/simple/v1/cju095oko0dex0151o7paq2u7', {
     method: 'POST',
     headers: {
